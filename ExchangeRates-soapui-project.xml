@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="4a0b33b8-0e84-4f2b-90eb-fc6ddb0293af" activeEnvironment="Default" name="ExchangeRates_try2" soapui-version="5.5.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="Port">8081</con:setting><con:setting id="Set endpoint for HTTP Tunnel:">https://</con:setting><con:setting id="HTTP tunnel - KeyStore"/><con:setting id="HTTP tunnel - Password"/><con:setting id="HTTP tunnel - KeyPassword"/><con:setting id="HTTP tunnel - TrustStore"/><con:setting id="HTTP tunnel - TrustStore Password"/><con:setting id="Reuse request state">false</con:setting><con:setting id="HTTP tunnel - Set SSL Client Key Store path"/><con:setting id="Content types to monitor">*/html, */xml, */soap+xml, */json, */x-json, */javascript, */x-amf, */http</con:setting><con:setting id="HTTP tunnel - Set SSL Client Key Store Password"/></con:settings><con:interface xsi:type="con:WsdlInterface" id="4328425c-b3de-4e73-9f9b-8239c2c5c0c0" wsaVersion="NONE" name="GateSoap" type="wsdl" bindingName="{http://www.cba.am/}GateSoap" soapVersion="1_1" anonymous="optional" definition="http://api.cba.am/exchangerates.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://api.cba.am/exchangerates.asmx?WSDL"><con:part><con:url>http://api.cba.am/exchangerates.asmx?WSDL</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://www.cba.am/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.cba.am/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.cba.am/">
+      <s:import namespace="http://tempuri.org/ExchangeRatesDS.xsd"/>
+      <s:import schemaLocation="http://api.cba.am/exchangerates.asmx?schema=ExchangeRatesDS" namespace="http://tempuri.org/ExchangeRatesDS.xsd"/>
+      <s:element name="ISOCodesDetailed">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ISOCodesDetailedResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISOCodesDetailedResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/ExchangeRatesDS.xsd" name="namespace"/>
+                <s:attribute fixed="ISOCodesDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ISOCodes">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ISOCodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISOCodesResult" type="tns:ArrayOfString"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExchangeRatesLatestByISO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISO" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesLatestByISOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeRatesLatestByISOResult" type="tns:ExchangeRates"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ExchangeRates">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CurrentDate" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="NextAvailableDate" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="1" maxOccurs="1" name="PreviousAvailableDate" nillable="true" type="s:dateTime"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Rates" type="tns:ArrayOfExchangeRate"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfExchangeRate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ExchangeRate" nillable="true" type="tns:ExchangeRate"/>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ExchangeRate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ISO" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string"/>
+          <s:element minOccurs="0" maxOccurs="1" name="Difference" type="s:string"/>
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ExchangeRatesByDateByISO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime"/>
+            <s:element minOccurs="0" maxOccurs="1" name="ISO" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesByDateByISOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeRatesByDateByISOResult" type="tns:ExchangeRates"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesByDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesByDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeRatesByDateResult" type="tns:ExchangeRates"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesLatest">
+        <s:complexType/>
+      </s:element>
+      <s:element name="ExchangeRatesLatestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeRatesLatestResult" type="tns:ExchangeRates"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesByDateRangeByISO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ISOCodes" type="s:string"/>
+            <s:element minOccurs="1" maxOccurs="1" name="DateFrom" type="s:dateTime"/>
+            <s:element minOccurs="1" maxOccurs="1" name="DateTo" type="s:dateTime"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExchangeRatesByDateRangeByISOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExchangeRatesByDateRangeByISOResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax"/>
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax"/>
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/ExchangeRatesDS.xsd" name="namespace"/>
+                <s:attribute fixed="ExchangeRatesByRangeDataTable" name="tableTypeName"/>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ISOCodesDetailedSoapIn">
+    <wsdl:part name="parameters" element="tns:ISOCodesDetailed"/>
+  </wsdl:message>
+  <wsdl:message name="ISOCodesDetailedSoapOut">
+    <wsdl:part name="parameters" element="tns:ISOCodesDetailedResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ISOCodesSoapIn">
+    <wsdl:part name="parameters" element="tns:ISOCodes"/>
+  </wsdl:message>
+  <wsdl:message name="ISOCodesSoapOut">
+    <wsdl:part name="parameters" element="tns:ISOCodesResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesLatestByISOSoapIn">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesLatestByISO"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesLatestByISOSoapOut">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesLatestByISOResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesByDateByISOSoapIn">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesByDateByISO"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesByDateByISOSoapOut">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesByDateByISOResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesByDateSoapIn">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesByDate"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesByDateSoapOut">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesByDateResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesLatestSoapIn">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesLatest"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesLatestSoapOut">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesLatestResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesByDateRangeByISOSoapIn">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesByDateRangeByISO"/>
+  </wsdl:message>
+  <wsdl:message name="ExchangeRatesByDateRangeByISOSoapOut">
+    <wsdl:part name="parameters" element="tns:ExchangeRatesByDateRangeByISOResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="GateSoap">
+    <wsdl:operation name="ISOCodesDetailed">
+      <wsdl:documentation>Detailed list of codes.</wsdl:documentation>
+      <wsdl:input message="tns:ISOCodesDetailedSoapIn"/>
+      <wsdl:output message="tns:ISOCodesDetailedSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ISOCodes">
+      <wsdl:documentation>List of the latest available ISO codes. Based on latest published rates.</wsdl:documentation>
+      <wsdl:input message="tns:ISOCodesSoapIn"/>
+      <wsdl:output message="tns:ISOCodesSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesLatestByISO">
+      <wsdl:documentation>Retrieves latest rates of the specified ISO, will return single line. Includes trend. Check ISO Codes method for all available codes.</wsdl:documentation>
+      <wsdl:input message="tns:ExchangeRatesLatestByISOSoapIn"/>
+      <wsdl:output message="tns:ExchangeRatesLatestByISOSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDateByISO">
+      <wsdl:documentation>Retrieves latest rates of the specified date and ISO, will return single line. Includes trend. Check ISO Codes method for all available codes.</wsdl:documentation>
+      <wsdl:input message="tns:ExchangeRatesByDateByISOSoapIn"/>
+      <wsdl:output message="tns:ExchangeRatesByDateByISOSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDate">
+      <wsdl:documentation>Retrieves all available rates of the specified date. Includes trend.</wsdl:documentation>
+      <wsdl:input message="tns:ExchangeRatesByDateSoapIn"/>
+      <wsdl:output message="tns:ExchangeRatesByDateSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesLatest">
+      <wsdl:documentation>Retrieves the lastest published rates. Includes trend. Recommended for Web sites integration.</wsdl:documentation>
+      <wsdl:input message="tns:ExchangeRatesLatestSoapIn"/>
+      <wsdl:output message="tns:ExchangeRatesLatestSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDateRangeByISO">
+      <wsdl:documentation>Retrieves rates for the specified period for comma separated ISO codes list.</wsdl:documentation>
+      <wsdl:input message="tns:ExchangeRatesByDateRangeByISOSoapIn"/>
+      <wsdl:output message="tns:ExchangeRatesByDateRangeByISOSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GateSoap" type="tns:GateSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ISOCodesDetailed">
+      <soap:operation soapAction="http://www.cba.am/ISOCodesDetailed" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ISOCodes">
+      <soap:operation soapAction="http://www.cba.am/ISOCodes" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesLatestByISO">
+      <soap:operation soapAction="http://www.cba.am/ExchangeRatesLatestByISO" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDateByISO">
+      <soap:operation soapAction="http://www.cba.am/ExchangeRatesByDateByISO" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDate">
+      <soap:operation soapAction="http://www.cba.am/ExchangeRatesByDate" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesLatest">
+      <soap:operation soapAction="http://www.cba.am/ExchangeRatesLatest" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDateRangeByISO">
+      <soap:operation soapAction="http://www.cba.am/ExchangeRatesByDateRangeByISO" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GateSoap12" type="tns:GateSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ISOCodesDetailed">
+      <soap12:operation soapAction="http://www.cba.am/ISOCodesDetailed" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ISOCodes">
+      <soap12:operation soapAction="http://www.cba.am/ISOCodes" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesLatestByISO">
+      <soap12:operation soapAction="http://www.cba.am/ExchangeRatesLatestByISO" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDateByISO">
+      <soap12:operation soapAction="http://www.cba.am/ExchangeRatesByDateByISO" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDate">
+      <soap12:operation soapAction="http://www.cba.am/ExchangeRatesByDate" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesLatest">
+      <soap12:operation soapAction="http://www.cba.am/ExchangeRatesLatest" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExchangeRatesByDateRangeByISO">
+      <soap12:operation soapAction="http://www.cba.am/ExchangeRatesByDateRangeByISO" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Gate">
+    <wsdl:port name="GateSoap" binding="tns:GateSoap">
+      <soap:address location="http://api.cba.am/exchangerates.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="GateSoap12" binding="tns:GateSoap12">
+      <soap12:address location="http://api.cba.am/exchangerates.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://api.cba.am/exchangerates.asmx?schema=ExchangeRatesDS</con:url><con:content><![CDATA[<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/ExchangeRatesDS.xsd" id="ExchangeRatesDS" xmlns:mstns="http://tempuri.org/ExchangeRatesDS.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns="http://tempuri.org/ExchangeRatesDS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="ExchangeRatesDS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ExchangeRates">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Rate" type="xs:decimal"/>
+              <xs:element minOccurs="0" name="Amount" type="xs:int"/>
+              <xs:element minOccurs="0" name="ISO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Diff" type="xs:decimal"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ISOCodes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ISO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="DescriptionAM">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="DescriptionEN">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Amount" type="xs:int"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ExchangeRatesByRange">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Rate" type="xs:decimal"/>
+              <xs:element minOccurs="0" name="Amount" type="xs:int"/>
+              <xs:element minOccurs="0" name="ISO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Diff" type="xs:decimal"/>
+              <xs:element minOccurs="0" name="RateDate" type="xs:dateTime"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:ISOCodes"/>
+      <xs:field xpath="mstns:ISO"/>
+    </xs:unique>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint></con:endpoints><con:operation id="8b898bd2-e4f4-4877-b7c2-4d13543bcbcd" isOneWay="false" action="http://www.cba.am/ExchangeRatesByDate" name="ExchangeRatesByDate" bindingOperationName="ExchangeRatesByDate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0a81a6ba-7962-49fa-860a-fcca142e0aab" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesByDate>\r
+         <cba:date>?</cba:date>\r
+      </cba:ExchangeRatesByDate>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesByDate"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="04bc85dc-fba9-41be-a272-d7f58205a32e" isOneWay="false" action="http://www.cba.am/ExchangeRatesByDateByISO" name="ExchangeRatesByDateByISO" bindingOperationName="ExchangeRatesByDateByISO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c1816c98-2425-40cc-a54e-78e8459e6c9a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesByDateByISO>\r
+         <cba:date>?</cba:date>\r
+         <!--Optional:-->\r
+         <cba:ISO>?</cba:ISO>\r
+      </cba:ExchangeRatesByDateByISO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesByDateByISO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="869a5f05-dc4b-4ab1-9762-5aa872f419fb" isOneWay="false" action="http://www.cba.am/ExchangeRatesByDateRangeByISO" name="ExchangeRatesByDateRangeByISO" bindingOperationName="ExchangeRatesByDateRangeByISO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d17eb86f-5ee4-4d10-93c6-d71a9ce992d1" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesByDateRangeByISO>\r
+         <!--Optional:-->\r
+         <cba:ISOCodes>?</cba:ISOCodes>\r
+         <cba:DateFrom>?</cba:DateFrom>\r
+         <cba:DateTo>?</cba:DateTo>\r
+      </cba:ExchangeRatesByDateRangeByISO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesByDateRangeByISO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="eeabf0d3-9899-485a-bd43-1c54fa565dc1" isOneWay="false" action="http://www.cba.am/ExchangeRatesLatest" name="ExchangeRatesLatest" bindingOperationName="ExchangeRatesLatest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f37c712b-96b9-4452-8ba2-f4d0947d72b9" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesLatest/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesLatest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5ba10687-b456-4f28-8d8d-15fd7cd61323" isOneWay="false" action="http://www.cba.am/ExchangeRatesLatestByISO" name="ExchangeRatesLatestByISO" bindingOperationName="ExchangeRatesLatestByISO" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="43c83616-286e-4dd1-9188-b10a90ee64a7" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesLatestByISO>\r
+         <!--Optional:-->\r
+         <cba:ISO>?</cba:ISO>\r
+      </cba:ExchangeRatesLatestByISO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesLatestByISO"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8ea8aba9-51b1-4d6f-a7c8-2b971b7252f4" isOneWay="false" action="http://www.cba.am/ISOCodes" name="ISOCodes" bindingOperationName="ISOCodes" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b6b7e945-edf3-4374-b04b-8590ae6b19e7" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ISOCodes/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ISOCodes"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3e748e8d-ac10-4045-81a3-664e96a4a406" isOneWay="false" action="http://www.cba.am/ISOCodesDetailed" name="ISOCodesDetailed" bindingOperationName="ISOCodesDetailed" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a7ea0508-7428-4a10-a00b-2bb2141b96e3" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ISOCodesDetailed/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ISOCodesDetailed"/></con:call></con:operation></con:interface><con:testSuite id="a67f1a91-a74d-4e31-8b91-98dccb09983b" name="TestSuite1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="684ea9ae-d215-44cd-a661-0834b434ecbf" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase1" searchProperties="true"><con:settings/><con:testStep type="request" id="0690320b-6a17-4705-98c8-f52c3f14a12e" name="ISOCodes - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GateSoap</con:interface><con:operation>ISOCodes</con:operation><con:request name="ISOCodes - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="b2327d38-6d9a-48ca-ae9a-8c0dd12049e9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ISOCodes/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="deb3ec71-7c45-4bf4-a308-a8d6c4d8a4ca" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ISOCodes"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="properties" name="Properties" id="3324f4fb-657e-4076-ab15-b0e3e7e8398e"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>ISOCode</con:name><con:value>HKD</con:value></con:property><con:property><con:name>ISOCodes Count</con:name><con:value>59</con:value></con:property><con:property><con:name>ExRateLatestByISO</con:name><con:value>SGD</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="groovy" name="ISOCodeExcel" id="fc7ca456-562f-44be-bdc8-be5bc652ab1d"><con:settings/><con:config><script>import jxl.*
+import jxl.write.*
+
+WritableWorkbook workbook= Workbook.createWorkbook(new File("C:\SoapUI-5.5.0\bin\isocode.xls"))
+WritableSheet sheet= workbook.createSheet('sheet1',0)
+log.info(sheet.isHidden())
+Label label1=new Label(0,0,"ISOCODES")
+sheet.addCell(label1);
+for(i=1;i&lt;=59;i++)
+{
+def res = context.expand('${ISOCodes - Request 1#Response#//ns1:string['+i+']}')
+log.info(res)
+testRunner.testCase.testSteps["Properties"].setPropertyValue("ISOCode",res)
+def result=context.expand('${Properties#ISOCode}')
+
+Label label2=new Label(0,i,context.expand('${Properties#ISOCode}'));
+sheet.addCell(label2);
+
+}
+workbook.write();
+workbook.close();
+</script></con:config></con:testStep><con:testStep type="groovy" name="randomISOCode" id="cf209243-17b1-4d64-9a18-539796099733"><con:settings/><con:config><script>import jxl.*
+import jxl.write.*
+
+import java.util.Random
+
+Random random = new Random()
+Workbook workbook1= Workbook.getWorkbook(new File("C:/Users/Training05/Downloads/SoapUI-5.4.0/bin/isocode.xls"))
+Sheet sheet1=workbook1.getSheet(0)
+def count=(sheet1.getRows())-1
+String scount=Integer.toString(count)
+testRunner.testCase.testSteps["Properties"].setPropertyValue("ISOCodes Count",scount)
+log.info(scount)
+
+def start=2
+def end=count
+def randvalue = random.nextInt(end + 1 - start) + start
+log.info(randvalue)
+Cell iso=sheet1.getCell(0,randvalue)
+testRunner.testCase.testSteps["Properties"].setPropertyValue("ExRateLatestByISO",iso.getContents());</script></con:config></con:testStep><con:testStep type="transfer" name="randomISOCodeTransfer" id="02bb0d3f-8c0f-43e3-8d31-b204c9644173"><con:settings/><con:config xsi:type="con:PropertyTransfersStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:transfers setNullOnMissingSource="true" transferTextContent="true" failOnError="true" ignoreEmpty="false" transferToAll="false" entitize="false" transferChildNodes="false"><con:name>randISOCode</con:name><con:sourceType>ExRateLatestByISO</con:sourceType><con:sourceStep>Properties</con:sourceStep><con:targetType>Request</con:targetType><con:targetStep>ExchangeRatesLatestByISO - Request 1</con:targetStep><con:targetPath>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace ns1='http://www.cba.am/';
+//ns1:ISO</con:targetPath><con:upgraded>true</con:upgraded></con:transfers></con:config></con:testStep><con:testStep type="request" id="e2979be3-2601-4cc3-ad88-5165ce1a5966" name="ExchangeRatesLatestByISO - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GateSoap</con:interface><con:operation>ExchangeRatesLatestByISO</con:operation><con:request name="ExchangeRatesLatestByISO - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="8255cf82-6edb-4ec1-bd73-9acf5d080a94"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <cba:ExchangeRatesLatestByISO>
+         <!--Optional:-->
+         <cba:ISO>SGD</cba:ISO>
+      </cba:ExchangeRatesLatestByISO>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:assertion type="SOAP Response" id="c2d664ad-6c46-4e0d-8256-ca7e97be5e15" name="SOAP Response"/><con:assertion type="Simple Contains" id="235de354-8240-4f99-bcfc-eb80ce469eda" name="Contains"><con:configuration><token>${Properties#ExRateLatestByISO}</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesLatestByISO"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="f4c5f007-cf24-481b-b476-8e2001b1e00a" name="ExchangeRatesByDate - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GateSoap</con:interface><con:operation>ExchangeRatesByDate</con:operation><con:request name="ExchangeRatesByDate - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="03bca20c-aa08-4316-a7b1-e27206470643"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesByDate>\r
+         <cba:date>2019-05-21T00:00:00</cba:date>\r
+      </cba:ExchangeRatesByDate>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b7bce390-7f82-442f-829f-0b39c810e7aa" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesByDate"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="57a56c39-37f6-4b7c-b287-eb01f9f76a0b" name="ExchangeRatesByDateByISO - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GateSoap</con:interface><con:operation>ExchangeRatesByDateByISO</con:operation><con:request name="ExchangeRatesByDateByISO - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="2e7670a9-1943-4af4-9a60-5c52462ead01"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesByDateByISO>\r
+         <cba:date>?</cba:date>\r
+         <!--Optional:-->\r
+         <cba:ISO>?</cba:ISO>\r
+      </cba:ExchangeRatesByDateByISO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="8888ba6d-a220-42aa-9fce-798c18e39a64" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesByDateByISO"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="76148fbf-5054-40b3-881e-a8f546ce32eb" name="ExchangeRatesByDateRangeByISO - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>GateSoap</con:interface><con:operation>ExchangeRatesByDateRangeByISO</con:operation><con:request name="ExchangeRatesByDateRangeByISO - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="8bb386ea-7a18-42d3-9abf-d25fdc5a5cf9"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://api.cba.am/exchangerates.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cba="http://www.cba.am/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <cba:ExchangeRatesByDateRangeByISO>\r
+         <!--Optional:-->\r
+         <cba:ISOCodes>?</cba:ISOCodes>\r
+         <cba:DateFrom>?</cba:DateFrom>\r
+         <cba:DateTo>?</cba:DateTo>\r
+      </cba:ExchangeRatesByDateRangeByISO>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="36d7bad5-249a-413a-98f8-17f55f3a1dd2" name="SOAP Response"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.cba.am/ExchangeRatesByDateRangeByISO"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
